@@ -1,9 +1,9 @@
 const multer = require("multer");
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'public/images/products') //upload-directory
-    },
+    // destination: function (req, file, cb) {
+    //     cb(null, 'public/images/products') //upload-directory
+    // },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
         let extension = file.originalname.split('.')[1];
@@ -40,7 +40,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
              storage: storage,
              limits: {
-                fileSize: 102,
+                fileSize: fileSize,
              },
              fileFilter: fileFilter,
        })
