@@ -14,6 +14,7 @@ const doctorRouter = require("./src/routes/doctorRoute");
 const appointmentRouter = require("./src/routes/appointmentRoute");
 const reportRouter = require("./src/routes/reportRoute");
 const uploadRouter = require("./src/routes/uploadRoute");
+const collectionRouter = require("./src/routes/collectionRoute");
 
 
 
@@ -60,6 +61,7 @@ app.use('/api/doctor', doctorRouter);
 app.use('/api/appointment', appointmentRouter);
 app.use('/api/report', reportRouter);
 app.use('/api/upload', uploadRouter);
+app.use('/api/collection', collectionRouter);
 
 
 

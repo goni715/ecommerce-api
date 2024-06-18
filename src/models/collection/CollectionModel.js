@@ -16,12 +16,12 @@ const CollectionSchema = new mongoose.Schema(
         },
         description:{
             type: String,
-            required: [true, "title is required"],
+            required: [true, "description is required"],
             trim: true
         },
         image: {
-            type: String,
-            required: true,
+            public_id: { type: String },
+            image_url: { type: String }
         },
         products: [
             {
@@ -35,6 +35,6 @@ const CollectionSchema = new mongoose.Schema(
 )
 
 
-const ContactModel = mongoose.model("collections", CollectionSchema);
+const CollectionModel = mongoose.model("collections", CollectionSchema);
 
-module.exports = ContactModel
+module.exports = CollectionModel;

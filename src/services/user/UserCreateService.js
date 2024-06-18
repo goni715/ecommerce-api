@@ -3,20 +3,23 @@ const hashedPassword = require("../../utility/hashedPassword");
 
 const UserCreateService= async (req,res,DataModel) => {
    try{
-      let reqBody=req.body;
-      let existingEmail = await DataModel.aggregate([{$match:{email: reqBody['email']}}]);
+      const {username, email} = req.body;
+       let existingEmail = await DataModel.findOne({email: email});
 
-      //let userExists = await DataModel.exists({email: reqBody['email']});//we get only an _id (ObjectId)
-      
-
-          if(existingEmail.length ===0){
-               reqBody.password = await hashedPassword(reqBody.password);//hashedPassword
-               let data = await DataModel.create(reqBody)
+       if(existingEmail){
+           res.status(409).json({message: "fail", data:"Email Already Exist"}); //conflicting-request
+       }
+       else{
+           let existingUsername = await DataModel.findOne({username: username});
+           if(existingUsername){
+               res.status(403).json({message: "fail", data:"Username is already taken!"}); //conflicting-request
+           }
+           else{
+               req.body.password = await hashedPassword(req.body.password);//hashedPassword
+               let data = await DataModel.create(req.body)
                res.status(201).json({message: "success", data:data});
-          }
-          else{
-            res.status(409).json({message: "fail", data:"Email Already Exist"}); //conflicting-request
-          }
+           }
+       }
    }
    catch (error) {
       res.status(500).json({ message: "error", data:error.toString()});
