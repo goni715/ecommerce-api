@@ -10,9 +10,6 @@ const dbConnect = require("./src/utility/dbConnect");
 const authRouter = require("./src/routes/authRoute");
 const contactRouter = require("./src/routes/contactRoute");
 const userRouter = require("./src/routes/userRoute");
-const doctorRouter = require("./src/routes/doctorRoute");
-const appointmentRouter = require("./src/routes/appointmentRoute");
-const reportRouter = require("./src/routes/reportRoute");
 const uploadRouter = require("./src/routes/uploadRoute");
 const collectionRouter = require("./src/routes/collectionRoute");
 
@@ -57,9 +54,6 @@ dbConnect();
 app.use('/api/auth', authRouter);
 app.use('/api/contact', contactRouter);
 app.use('/api/user', userRouter);
-app.use('/api/doctor', doctorRouter);
-app.use('/api/appointment', appointmentRouter);
-app.use('/api/report', reportRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/collection', collectionRouter);
 
