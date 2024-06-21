@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-router.post('/create-collection',AuthVerifyMiddleware, upload.single("image"), CollectionController.CreateCollection);
+router.post('/create-collection', upload.single("image"), CollectionController.CreateCollection);
 // router.get("/get-all-contact", AuthVerifyMiddleware, IsAdmin, ContactController.GetAllContact);
 // router.delete('/delete-contact/:id', AuthVerifyMiddleware, IsAdmin, ContactController.DeleteContact);
 // router.put('/update-contact-status/:id', AuthVerifyMiddleware, IsAdmin, ContactController.UpdateContact);
