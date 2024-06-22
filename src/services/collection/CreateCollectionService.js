@@ -33,7 +33,7 @@ const CreateCollectionService = async (req, res, CollectionModel) => {
                 }
 
                 let data = await CollectionModel.create(req.body)
-                res.status(201).json({message:"success",data:data, result: cloudinaryResponse});
+                res.status(201).json({message:"success",data:data});
 
             }
         }
