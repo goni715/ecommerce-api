@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const CollectionSchema = new mongoose.Schema(
+const ProductSchema = new mongoose.Schema(
     {
         title:{
             type: String,
@@ -16,17 +16,35 @@ const CollectionSchema = new mongoose.Schema(
         },
         description:{
             type: String,
-            required: [true, "title is required"],
+            required: [true, "description is required"],
             trim: true
         },
-        image: {
+        category:{
             type: String,
-            required: true,
+            required: [true, "category is required"],
+            trim: true
         },
-        products: [
+        images: [
+            {
+                public_id: String,
+                image_url: String,
+            }
+        ],
+        price:{
+            type:Number,
+            required: true
+        },
+        cost:{
+            type:Number,
+            required: true
+        },
+        tags: [String],
+        sizes: [String],
+        colors: [String],
+        collections: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Product",
+                ref: "collections",
             }
         ],
 
@@ -35,6 +53,6 @@ const CollectionSchema = new mongoose.Schema(
 )
 
 
-const ContactModel = mongoose.model("collections", CollectionSchema);
+const ProductModel = mongoose.model("products", ProductSchema);
 
-module.exports = ContactModel
+module.exports = ProductModel

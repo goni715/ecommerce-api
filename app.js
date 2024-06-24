@@ -12,6 +12,7 @@ const contactRouter = require("./src/routes/contactRoute");
 const userRouter = require("./src/routes/userRoute");
 const uploadRouter = require("./src/routes/uploadRoute");
 const collectionRouter = require("./src/routes/collectionRoute");
+const productRouter = require("./src/routes/productRoute");
 
 
 
@@ -56,6 +57,7 @@ app.use('/api/contact', contactRouter);
 app.use('/api/user', userRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/collection', collectionRouter);
+app.use('/api/product', productRouter);
 
 
 
